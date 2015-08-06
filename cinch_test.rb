@@ -1,4 +1,5 @@
 require 'cinch'
+require './plugins/hello'
 
 bot = Cinch::Bot.new do
   configure do |c|
@@ -8,10 +9,7 @@ bot = Cinch::Bot.new do
     c.password = ''
     c.channels = ["#super_yan", "#nechobot"]
     c.user     = "nechobot"
-  end
-
-  on :message, "hello" do |m|
-    m.reply "Hello there, #{m.user.nick}"
+    c.plugins.plugins = [Hello]
   end
 
   on :message, /dice/ do |m|
